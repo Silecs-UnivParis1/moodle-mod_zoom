@@ -200,6 +200,12 @@ function populate_zoom_from_response(stdClass $zoom, stdClass $response) {
     if (isset($response->settings->waiting_room)) {
         $newzoom->option_waiting_room = $response->settings->waiting_room;
     }
+    if (isset($response->settings->global_dial_in_numbers)) {
+        $phone_numbers ="";
+        foreach ($response->settings->global_dial_in_numbers as $key => $value) {
+            $newzoom->phone_numbers .= $value->number ." </br>";
+        }
+    }
     $newzoom->timemodified = time();
 
     return $newzoom;

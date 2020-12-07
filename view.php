@@ -222,6 +222,8 @@ if (!$zoom->recurring) {
 
     $table->data[] = array($strstatus, $status);
 }
+if ($zoom->phone_numbers)
+	$table->data[] = array('Numéro(s) de téléphone(s)' , html_writer::div($zoom->phone_numbers));
 
 $urlall = new moodle_url('/mod/zoom/index.php', array('id' => $course->id));
 $linkall = html_writer::link($urlall, $strall);
